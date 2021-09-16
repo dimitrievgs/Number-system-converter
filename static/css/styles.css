@@ -7,6 +7,14 @@ p {
   font-size: 1rem;
 }
 
+button {
+  font-size: 1.05rem;
+}
+
+textarea {
+  width: 600px;
+}
+
 .input-data, .output-data, .general-info {
   padding:5px 10px;
 }
@@ -28,9 +36,5 @@ p {
 
 #dataInType {
   margin-left: 20px;
-  font-size: 1.05rem;
-}
-
-button {
   font-size: 1.05rem;
 }
