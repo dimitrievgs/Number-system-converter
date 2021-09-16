@@ -1,0 +1,36 @@
+body {
+  background-color: #fff;
+  font-size: 10px;
+}
+
+p {
+  font-size: 1rem;
+}
+
+.input-data, .output-data, .general-info {
+  padding:5px 10px;
+}
+
+.input-data {
+  background-color: #dbffed;
+  margin-bottom: 20px;
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+
+.output-data {
+  background-color: #daf7f7;
+  margin-bottom: 20px;
+}
+
+#dataInType {
+  margin-left: 20px;
+  font-size: 1.05rem;
+}
+
+button {
+  font-size: 1.05rem;
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        Number system converter
+    </title>
+
+    <link rel="stylesheet" href="./static/css/styles.css">
+    <script src="./static/js/script.js"></script>
+</head>
+
+<body>
+    <div class="general-info">
+        <p>Separate values with spaces.</p>
+    </div>
+
+    <div class="input-data">
+        <p id="input">Input</p>
+        <div class="flex-container">
+            <textarea id="input-data" style="width: 600px;"></textarea>
+            <select name="select" id="dataInType">
+                <option value="10">Decimal</option>
+                <option value="16">Hex</option>
+                <option value="2">Binary</option>
+                <option value="ascii">Ascii</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="output-data">
+        <p>Decimal</p>
+        <textarea id="output-data-10" style="width:600px;"></textarea>
+        <p>Hex</p>
+        <textarea id="output-data-16" style="width:600px;"></textarea>
+        <p>Binary</p>
+        <textarea id="output-data-2" style="width:600px;"></textarea>
+        <p>ASCII</p>
+        <textarea id="output-data-ascii" style="width:600px;"></textarea>
+    </div>
+    <button id="convert-button">Convert</button>
+
+    <script>
+        let inputTextArea = document.getElementById("input-data");
+        let numberSystemSelector = document.getElementById("dataInType");
+
+        let outputTextArea10 = document.getElementById("output-data-10")
+        let outputTextArea16 = document.getElementById("output-data-16")
+        let outputTextArea2 = document.getElementById("output-data-2")
+        let outputTextAreaASCII = document.getElementById("output-data-ascii")
+
+        let convertButton = document.getElementById("convert-button");
+
+        convertButton.addEventListener("click", function () {
+            let inText = inputTextArea.value;
+            let valuesIn = inText.split(" ");
+            let valuesDecimal = convertToDecimal(valuesIn, numberSystemSelector.value);
+
+            //alert(valuesOut);
+            outputTextArea10.value = convertToNumberSystem(valuesDecimal, "10").join(" ");
+            outputTextArea16.value = convertToNumberSystem(valuesDecimal, "16").join(" ");
+            outputTextArea2.value = convertToNumberSystem(valuesDecimal, "2").join(" ");
+            outputTextAreaASCII.value = convertToNumberSystem(valuesDecimal, "ascii").join(" ");
+        });
+
+        function convertToDecimal(valuesIn, numberSystemIn) {
+            let valuesDecimal = [];
+            switch (numberSystemIn) {
+                case "10":
+                    valuesDecimal = valuesIn.slice(0);
+                    break;
+                case "16":
+                    for (let val of valuesIn) {
+                        valuesDecimal.push(parseInt(val, 16));
+                    }
+                    break;
+                case "2":
+                    for (let val of valuesIn) {
+                        valuesDecimal.push(parseInt(val, 2));
+                    }
+                    break;
+                case "ascii":
+                    for (let val of valuesIn) {
+                        valuesDecimal.push(val.charCodeAt(0));
+                    }
+                    break;
+            }
+
+            return valuesDecimal;
+        }
+
+        function convertToNumberSystem(valuesDecimal, numberSystemOut) {
+            let valuesOut = [];
+            switch (numberSystemOut) {
+                case "10":
+                    valuesOut = valuesDecimal.slice(0);
+                    break;
+                case "16":
+                    for (let val of valuesDecimal) {
+                        valuesOut.push(Number(val).toString(16));
+                    }
+                    break;
+                case "2":
+                    for (let val of valuesDecimal) {
+                        valuesOut.push(Number(val).toString(2));
+                    }
+                    break;
+                case "ascii":
+                    for (let val of valuesDecimal) {
+                        valuesOut.push(String.fromCharCode(Number(val)));
+                    }
+                    break;
+            }
+
+            return valuesOut;
+        }
+    </script>
+</body>
+
+</html>
