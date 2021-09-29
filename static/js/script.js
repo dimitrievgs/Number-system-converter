@@ -1,19 +1,19 @@
-(window).onload = function() {
+(window).onload = function () {
     let inputTextArea = document.getElementById("input-data");
     let numberSystemSelector = document.getElementById("dataInType");
-    
+
     let outputTextArea10 = document.getElementById("output-data-10")
     let outputTextArea16 = document.getElementById("output-data-16")
     let outputTextArea2 = document.getElementById("output-data-2")
     let outputTextAreaASCII = document.getElementById("output-data-ascii")
-    
+
     let convertButton = document.getElementById("convert-button");
-    
+
     convertButton.addEventListener("click", function () {
         let inText = inputTextArea.value;
         let valuesIn = inText.split(" ");
         let valuesDecimal = convertToDecimal(valuesIn, numberSystemSelector.value);
-    
+
         //alert(valuesOut);
         outputTextArea10.value = convertToNumberSystem(valuesDecimal, "10").join(" ");
         outputTextArea16.value = convertToNumberSystem(valuesDecimal, "16").join(" ");
